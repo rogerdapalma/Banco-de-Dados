@@ -14,7 +14,7 @@ WHERE p.UnitsInStock > 0 OR p.Discontinued = 1;
 select * from dbo.products;
 
 
---Nome do produto, nome do fornecedor, nome da categoria, preço e estoque
+--Nome do produto, nome do fornecedor, nome da categoria, preÃ§o e estoque
 SELECT
 	P.PRODUCTNAME AS PRODUCT,
 	S.COMPANYNAME SUPPLIER,
@@ -63,7 +63,7 @@ JOIN DBO.ORDERS O ON O.EMPLOYEEID = E.EMPLOYEEID
 GROUP BY CONCAT(E.FIRSTNAME, ' ', E.LASTNAME)
 GO
 
---Nome do vendedor e quantidade de territórios aos quais ele está vinculado
+--Nome do vendedor e quantidade de territÃ³rios aos quais ele estÃ¡ vinculado
 SELECT
 	CONCAT(E.FIRSTNAME, ' ', E.LASTNAME) AS NAME,
 	COUNT(T.TERRITORYID) AS TERRITORIES
@@ -71,3 +71,20 @@ FROM DBO.EMPLOYEES E
 JOIN EMPLOYEETERRITORIES T ON T.EMPLOYEEID = E.EMPLOYEEID
 GROUP BY CONCAT(E.FIRSTNAME, ' ', E.LASTNAME)
 GO
+
+FROM Products p
+JOIN Suppliers s on p.SupplierID = s.SupplierID
+JOIN Categories c ON p.CategoryID = c.CategoryID;
+
+SELECT p.ProductName, p.UnitsInStock
+FROM Products p 
+WHERE p.UnitsInStock > 0 AND p.Discontinued = 0;
+
+SELECT p.ProductName, p.UnitsInStock
+FROM Products p 
+WHERE p.UnitsInStock > 0 OR p.Discontinued = 1;
+
+SELECT e.FirstName, COUNT(O.OrderID) 
+FROM Employees e
+LEFT JOIN Orders o ON e.EmployeeID = o.EmployeeID
+GROUP BY e.FirstName;
