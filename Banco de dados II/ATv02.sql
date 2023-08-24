@@ -11,8 +11,6 @@ SELECT p.ProductName, p.UnitsInStock
 FROM Products p 
 WHERE p.UnitsInStock > 0 OR p.Discontinued = 1;
 
-select * from dbo.products;
-
 
 --Nome do produto, nome do fornecedor, nome da categoria, preço e estoque
 SELECT
@@ -72,6 +70,8 @@ JOIN EMPLOYEETERRITORIES T ON T.EMPLOYEEID = E.EMPLOYEEID
 GROUP BY CONCAT(E.FIRSTNAME, ' ', E.LASTNAME)
 GO
 
+	
+SELECT * from dbo.products;
 FROM Products p
 JOIN Suppliers s on p.SupplierID = s.SupplierID
 JOIN Categories c ON p.CategoryID = c.CategoryID;
