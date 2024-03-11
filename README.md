@@ -1,5 +1,5 @@
 # Banco-de-dados
-Repositorio da disciplina de banco de dados 
+Repositório dedicado às atividades realizadas na disciplina de Banco de dados do curso de Ciência da Computação - UFN. 
 
  <div style="display: inline_block"><br>
  <img align="center" alt="Roger-MySQL" height="70" width="" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg">
