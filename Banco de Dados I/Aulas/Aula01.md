@@ -19,6 +19,27 @@ graph TD;
     A --> E[Backup];
 
 
+- Banco de dados
+    - Compartilhamento de dados 
+    - Sistema de gerebcua de banco de dados
+- Modelos de banco de dados 
+    - Modelo conceitual
+    - Modelo logico
+    - modelo conceitual como modelo de organizaçao
+- Projeto de BD
+
+Modelar->conceitual->logico->fisico=>projetar
+
+Como informatica é adotada em organizações
+
+- informatica é implementada gradativamente
+- exemplo - empresa hipotetica
+- implementa gradativamente sistemas para:
+    - venda
+    - produção
+    - compras
+-onde ficam os dados de produto?
+
 
 
 Na computação, **modelar** e **projetar** um sistema ou um banco de dados são etapas fundamentais no desenvolvimento de software. Cada um desses termos tem um significado específico e está relacionado à forma como os sistemas são estruturados, organizados e implementados.
@@ -84,3 +105,10 @@ O projeto de banco de dados envolve:
 | **Projetar** | Definir a **arquitetura, tecnologias e implementação** do sistema ou banco de dados, garantindo eficiência e segurança. |
 
 Modelagem é **a fase inicial**, enquanto o projeto detalha como será a **implementação real** do sistema ou banco de dados.
+
+
+Oque -> modelar
+Como -> projetar -> metodologia
+Porque -> 
+
+
