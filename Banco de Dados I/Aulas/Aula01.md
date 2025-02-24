@@ -28,36 +28,53 @@ graph TD;
 # SaaS
 
 ## Estrutura
+### **Modelo Ordem de Serviço (OS)**
+#### **Texto ASCII**
+```plaintext
+              +----------------+
+              |      O.S.      |
+              | -------------- |
+              | *Número OS*    |1..n
+              | *Descrição*    |---------------------+                    
+              +----------------+                     |
+                      | 0..n                         |
+                      |                              |
+                      v 1..n                         |
+              +----------------+                     |
+              |    Produto     |                     |
+              | -------------- |                     |
+              | Código Produto |                     |
+              | Descrição      |                     |
+              | Marca          |                     |
+              | Modelo         |                     |
+              +----------------+                     |
+                                                     |
+              +----------------+---------------------|
+              |    Cliente     |1..1
+              | -------------- |
+              | *CPF* (PK)     |
+              | Nome           |
+              +----------------+
+                      ^
+                      |
+                      |
+              Atributos ou Variáveis 
+              ou Propriedades Federais
+```
 
-                +----------------+
-                |      O.S.      |
-                | -------------- |
-                | *Número OS*    |1..n
-                | *Descrição*    |---------------------+                    
-                +----------------+                     |
-                        | 0..n                         |
-                        |                              |
-                        v 1..n                         |
-                +----------------+                     |
-                |    Produto     |                     |
-                | -------------- |                     |
-                | Código Produto |                     |
-                | Descrição      |                     |
-                | Marca          |                     |
-                | Modelo         |                     |
-                +----------------+                     |
-                                                       |
-                +----------------+---------------------|
-                |    Cliente     |1..1
-                | -------------- |
-                | *CPF* (PK)     |
-                | Nome           |
-                +----------------+
-                        ^
-                        |
-                        |
-                Atributos ou Variáveis 
-                ou Propriedades Federais
+#### **Diagrama Mermaid.js**
+```mermaid
+graph TD;
+    A[Ordem de Serviço (OS)] -->|1..n| B[Produto];
+    A -->|1..1| C[Cliente];
+    B -->|0..n| A;
+    
+    B[Produto] -->|1..n| A;
+    C[Cliente] -->|1..1| A;
+
+    C[Cliente] -->|Atributos ou Variáveis 
+                ou Propriedades Federais|;
+```
 
 ### Descrição : 3 tabelas, (cliente)|(produto)|(ordem e serviço)
 
@@ -209,8 +226,10 @@ obra pedreiro engenheiro
 
 # Modelo de Relacionamento
 
-## Estrutura
 
+### **Modelo de Obras (Proprietário, Obra, Pedreiro, Engenheiro)**
+#### **Texto ASCII**
+```plaintext
                 +------------------+
                 |   Proprietário   |
                 | ---------------- |
@@ -249,4 +268,18 @@ obra pedreiro engenheiro
                 | CREA             |
                 | Endereço         |
                 +------------------+
+```
 
+#### **Diagrama Mermaid.js**
+```mermaid
+graph TD;
+    A[Proprietário] -->|1..n| B[Obra];
+    B -->|0..n| C[Pedreiro];
+    B -->|1..0| D[Engenheiro];
+
+    C -->|1..n| B;
+    D -->|1..0| B;
+
+    C[Pedreiro] -->|1..n| B;
+    D[Engenheiro] -->|1..0| B;
+```
