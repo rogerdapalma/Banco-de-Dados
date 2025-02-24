@@ -1,47 +1,139 @@
-        +----------------------+
-        |       SGBD          |
-        |  +--------------+   |
-        |  |     BD       |   |
-        |  |  "coleção"   |   |
-        |  +--------------+   |
-        | Serviços:           |
-        | - Integridade       |
-        | - Segurança         |
-        |                      |
-        | BACKUP               |
-        +----------------------+
 
 
+```plaintext
+      +----------------------+
+      |       SGBD          |
+      |  +--------------+   |
+      |  |     BD       |   |
+      |  |  "coleção"   |   |
+      |  +--------------+   |
+      | Serviços:           |
+      | - Integridade       |
+      | - Segurança         |
+      |                      |
+      | BACKUP               |
+      +----------------------+
+```
+
+```mermaid
 graph TD;
     A[SGBD] --> B[BD - Banco de Dados];
     B --> C["Coleção"];
     A --> D[Serviços: Integridade e Segurança];
     A --> E[Backup];
+```
+
+---
+
+# SaaS
+
+## Estrutura
+
+                +----------------+
+                |      O.S.      |
+                | -------------- |
+                | *Número OS*    |1..n
+                | *Descrição*    |---------------------+                    
+                +----------------+                     |
+                        | 0..n                         |
+                        |                              |
+                        v 1..n                         |
+                +----------------+                     |
+                |    Produto     |                     |
+                | -------------- |                     |
+                | Código Produto |                     |
+                | Descrição      |                     |
+                | Marca          |                     |
+                | Modelo         |                     |
+                +----------------+                     |
+                                                       |
+                +----------------+---------------------|
+                |    Cliente     |1..1
+                | -------------- |
+                | *CPF* (PK)     |
+                | Nome           |
+                +----------------+
+                        ^
+                        |
+                        |
+                Atributos ou Variáveis 
+                ou Propriedades Federais
+
+### Descrição : 3 tabelas, (cliente)|(produto)|(ordem e serviço)
+
+---
+
+## Conceitos Gerais
+
+- **Entidades** (*Modelo ER*)
+- **Classes** (*Modelo OO*)
+- **Categoria**
+
+---
+
+## Estatística
+
+                O
+               /|\
+              / | \
+             O--O--O  → **Tendência geral**
+               |
+               O
+               
+               ↓
+        **Tendência de um**
+
+---
+
+## Mineração de Dados
+
+        (  )  → **Mineração**
 
 
-- Banco de dados
-    - Compartilhamento de dados 
-    - Sistema de gerebcua de banco de dados
-- Modelos de banco de dados 
-    - Modelo conceitual
-    - Modelo logico
-    - modelo conceitual como modelo de organizaçao
-- Projeto de BD
+---
 
-Modelar->conceitual->logico->fisico=>projetar
+### **Banco de Dados**
+- Compartilhamento de dados 
+- Sistema de gerenciamento de banco de dados
 
-Como informatica é adotada em organizações
+### **Modelos de Banco de Dados**
+- Modelo conceitual
+- Modelo lógico
+- Modelo conceitual como modelo de organização
 
-- informatica é implementada gradativamente
-- exemplo - empresa hipotetica
-- implementa gradativamente sistemas para:
-    - venda
-    - produção
-    - compras
--onde ficam os dados de produto?
+### **Projeto de Banco de Dados**
+**Modelar → Conceitual → Lógico → Físico ⇒ Projetar**
 
+---
 
+## **Como a informática é adotada em organizações**
+- A informática é implementada gradativamente.
+- Exemplo: empresa hipotética.
+- Implementação gradual de sistemas para:
+  - Vendas
+  - Produção
+  - Compras
+- **Onde ficam os dados do produto?**
 
+---
+
+### **Sistema de Gerenciamento de Banco de Dados**
+- Início da programação de aplicações.
+- Os primeiros programas continham todas as operações:
+  - Interface do usuário.
+  - Transformação de dados e cálculos.
+  - Operações de armazenamento de dados.
+  - Comunicação com outros sistemas e programas.
+
+---
+
+### **Modelo de dados - Conteúdo**
+- Exemplo de industria
+- Modelo de dados informa
+    - são armazenados informações sobre o produto
+    - para cada produto, são armazenados seu codigo. preço
+
+## **Na computação, o que significa modelar e projetar um sistema ou um banco de dados?**
 Na computação, **modelar** e **projetar** um sistema ou um banco de dados são etapas fundamentais no desenvolvimento de software. Cada um desses termos tem um significado específico e está relacionado à forma como os sistemas são estruturados, organizados e implementados.
 
 ---
@@ -53,10 +145,10 @@ Modelar significa criar uma **representação abstrata** do sistema ou banco de 
 A modelagem de sistemas envolve a criação de diagramas e representações conceituais para descrever a funcionalidade e a estrutura de um sistema de software. Algumas abordagens comuns incluem:
 
 - **Diagramas UML (Unified Modeling Language)**:
-  - **Diagrama de Casos de Uso** (quem interage com o sistema e quais funcionalidades são oferecidas)
-  - **Diagrama de Classes** (estrutura dos objetos e suas relações)
-  - **Diagrama de Sequência** (fluxo de interações entre os componentes do sistema)
-  - **Diagrama de Estado** (estados possíveis de um componente do sistema)
+  - **Diagrama de Casos de Uso** (quem interage com o sistema e quais funcionalidades são oferecidas).
+  - **Diagrama de Classes** (estrutura dos objetos e suas relações).
+  - **Diagrama de Sequência** (fluxo de interações entre os componentes do sistema).
+  - **Diagrama de Estado** (estados possíveis de um componente do sistema).
 
 - **Modelagem de Processos de Negócio**:
   - Utiliza **BPMN (Business Process Model and Notation)** para representar fluxos de atividades dentro da empresa.
@@ -106,9 +198,55 @@ O projeto de banco de dados envolve:
 
 Modelagem é **a fase inicial**, enquanto o projeto detalha como será a **implementação real** do sistema ou banco de dados.
 
+---
 
-Oque -> modelar
-Como -> projetar -> metodologia
-Porque -> 
+### **Questões Fundamentais**
+- **O que** → Modelar
+- **Como** → Projetar (definir metodologia)
+- **Por quê** → Justificar a necessidade do sistema
 
+obra pedreiro engenheiro
+
+# Modelo de Relacionamento
+
+## Estrutura
+
+                +------------------+
+                |   Proprietário   |
+                | ---------------- |
+                | *CPF*            |
+                | Nome             |
+                | Endereço         |
+                +------------------+
+                        |
+                        |
+                        | 1..n
+                        |
+                        v
+                +------------------+ 0..n
+                |       Obra       |-------------------------
+                +------------------+                        |   
+                        |                                   |
+                        | 0..n                              |
+                        |                                   |
+                        v 1..n                              |
+                +------------------+        1..0            |
+                |    Pedreiro      |-------------------+    |   
+                | ---------------- |                   |    |
+                | *CPF*            |                   |    |
+                | Especialidade    |                   |    |
+                | Endereço         |                   |    |
+                +------------------+                   |    |
+                                                       |    |
+                                                       |    |
+                                                       |    |
+                                                       |    |
+                +------------------+                   |    |
+                |    Engenheiro     | <----------------+    |
+                | ---------------- |                        |
+                | *CPF*, CNPJ      |------------------------+
+                | Nome             |
+                | CREA             |
+                | Endereço         |
+                +------------------+
 
