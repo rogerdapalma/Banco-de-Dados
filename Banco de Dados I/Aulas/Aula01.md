@@ -65,15 +65,12 @@ graph TD;
 #### **Diagrama Mermaid.js**
 ```mermaid
 graph TD;
-    A[Ordem de Serviço (OS)] -->|1..n| B[Produto];
+    A[Ordem de Serviço] -->|1..n| B[Produto];
     A -->|1..1| C[Cliente];
     B -->|0..n| A;
     
     B[Produto] -->|1..n| A;
     C[Cliente] -->|1..1| A;
-
-    C[Cliente] -->|Atributos ou Variáveis 
-                ou Propriedades Federais|;
 ```
 
 ### Descrição : 3 tabelas, (cliente)|(produto)|(ordem e serviço)
