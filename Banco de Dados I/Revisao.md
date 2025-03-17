@@ -234,13 +234,14 @@ erDiagram
 
     FORNECEDOR ||--o{ LOTE : fornece
     FABRICANTE ||--o{ PRODUTO : fabrica
-    LOTE ||--|{ PRODUTO : contém
-    PRODUTO ||--|{ MEDICAMENTO : especialização
-    PRODUTO ||--|{ PERFUMARIA : especialização
+    LOTE ||--|{ PRODUTO : contem
+    PRODUTO ||--|{ MEDICAMENTO : especializacao
+    PRODUTO ||--|{ PERFUMARIA : especializacao
     MEDICAMENTO ||--o{ MEDICAMENTO_RECEITA : necessita
     RECEITA_MEDICA ||--o{ MEDICAMENTO_RECEITA : autoriza
-    PRODUTO ||--o{ PRODUTO_VENDA : está_em
-    VENDA ||--o{ PRODUTO_VENDA : contém
+    PRODUTO ||--o{ PRODUTO_VENDA : esta_em
+    VENDA ||--o{ PRODUTO_VENDA : contem
+
 
 ```
 ---
