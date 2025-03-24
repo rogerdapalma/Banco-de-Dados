@@ -170,63 +170,78 @@ Empregrado*(idEmpregdo,nome,cpf,crea,gerente)
 
 ```mermaid
 erDiagram
-    Usuario {
-        int id
-        string nome
-        string email
-        string papel
+    FORNECEDOR {
+        int IdFornecedor PK
+        string Nome
+        string CNPJ
     }
 
-    Instituicao {
-        int id
-        string nome
+    FABRICANTE {
+        int IdFabricante PK
+        string Nome
+        string CNPJ
     }
 
-    Evento {
-        int id
-        string titulo
-        date data_entrega
+    LOTE {
+        int IdLote PK
+        int IdFornecedor FK
+        date DataFabricacao
+        date DataValidade
     }
 
-    ModeloArtigo {
-        int id
-        string descricao
-        string formato
+    PRODUTO {
+        int IdProduto PK
+        string Nome
+        string Categoria
+        int IdFabricante FK
+        int IdLote FK
     }
 
-    AreaDeInteresse {
-        int id
-        string nome
+    MEDICAMENTO {
+        int IdProduto PK, FK
+        string Tarja
+        boolean NecessitaReceita
     }
 
-    Trabalho {
-        int id
-        string titulo
-        string resumo
-        string palavras_chave
-        string arquivo
+    PERFUMARIA {
+        int IdProduto PK, FK
+        string Tipo
     }
 
-    Parecer {
-        int id
-        string comentario
-        boolean aprovado
+    RECEITA_MEDICA {
+        int IdReceita PK
+        string CRM_Medico
+        string NomeMedico
+        date DataReceita
     }
 
-    %% Relacionamentos
-    Instituicao ||--o{ Usuario : possui
-    Instituicao ||--o{ Evento : organiza
+    VENDA {
+        int IdVenda PK
+        date DataVenda
+        decimal ValorTotal
+    }
 
-    Usuario ||--o{ Evento : coordena
-    Evento ||--|| ModeloArtigo : usa
-    Evento ||--o{ Trabalho : recebe
-    Evento ||--o{ AreaDeInteresse : abrange
+    PRODUTO_VENDA {
+        int IdProduto PK, FK
+        int IdVenda PK, FK
+        int Quantidade
+    }
 
-    Usuario ||--o{ Trabalho : submete
-    Trabalho }o--|| AreaDeInteresse : pertence_a
+    MEDICAMENTO_RECEITA {
+        int IdProduto PK, FK
+        int IdReceita PK, FK
+    }
 
-    Trabalho ||--o{ Parecer : recebe
-    Usuario ||--o{ Parecer : emite
+    FORNECEDOR ||--o{ LOTE : fornece
+    FABRICANTE ||--o{ PRODUTO : fabrica
+    LOTE ||--|{ PRODUTO : contem
+    PRODUTO ||--|{ MEDICAMENTO : especializacao
+    PRODUTO ||--|{ PERFUMARIA : especializacao
+    MEDICAMENTO ||--o{ MEDICAMENTO_RECEITA : necessita
+    RECEITA_MEDICA ||--o{ MEDICAMENTO_RECEITA : autoriza
+    PRODUTO ||--o{ PRODUTO_VENDA : esta_em
+    VENDA ||--o{ PRODUTO_VENDA : contem
+
 
 ```
 ---
