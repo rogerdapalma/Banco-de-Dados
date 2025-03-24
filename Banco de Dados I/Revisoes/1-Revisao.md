@@ -170,78 +170,63 @@ Empregrado*(idEmpregdo,nome,cpf,crea,gerente)
 
 ```mermaid
 erDiagram
-    FORNECEDOR {
-        int IdFornecedor PK
-        string Nome
-        string CNPJ
+    Usuario {
+        int id
+        string nome
+        string email
+        string papel
     }
 
-    FABRICANTE {
-        int IdFabricante PK
-        string Nome
-        string CNPJ
+    Instituicao {
+        int id
+        string nome
     }
 
-    LOTE {
-        int IdLote PK
-        int IdFornecedor FK
-        date DataFabricacao
-        date DataValidade
+    Evento {
+        int id
+        string titulo
+        date data_entrega
     }
 
-    PRODUTO {
-        int IdProduto PK
-        string Nome
-        string Categoria
-        int IdFabricante FK
-        int IdLote FK
+    ModeloArtigo {
+        int id
+        string descricao
+        string formato
     }
 
-    MEDICAMENTO {
-        int IdProduto PK, FK
-        string Tarja
-        boolean NecessitaReceita
+    AreaDeInteresse {
+        int id
+        string nome
     }
 
-    PERFUMARIA {
-        int IdProduto PK, FK
-        string Tipo
+    Trabalho {
+        int id
+        string titulo
+        string resumo
+        string palavras_chave
+        string arquivo
     }
 
-    RECEITA_MEDICA {
-        int IdReceita PK
-        string CRM_Medico
-        string NomeMedico
-        date DataReceita
+    Parecer {
+        int id
+        string comentario
+        boolean aprovado
     }
 
-    VENDA {
-        int IdVenda PK
-        date DataVenda
-        decimal ValorTotal
-    }
+    %% Relacionamentos
+    Instituicao ||--o{ Usuario : possui
+    Instituicao ||--o{ Evento : organiza
 
-    PRODUTO_VENDA {
-        int IdProduto PK, FK
-        int IdVenda PK, FK
-        int Quantidade
-    }
+    Usuario ||--o{ Evento : coordena
+    Evento ||--|| ModeloArtigo : usa
+    Evento ||--o{ Trabalho : recebe
+    Evento ||--o{ AreaDeInteresse : abrange
 
-    MEDICAMENTO_RECEITA {
-        int IdProduto PK, FK
-        int IdReceita PK, FK
-    }
+    Usuario ||--o{ Trabalho : submete
+    Trabalho }o--|| AreaDeInteresse : pertence_a
 
-    FORNECEDOR ||--o{ LOTE : fornece
-    FABRICANTE ||--o{ PRODUTO : fabrica
-    LOTE ||--|{ PRODUTO : contem
-    PRODUTO ||--|{ MEDICAMENTO : especializacao
-    PRODUTO ||--|{ PERFUMARIA : especializacao
-    MEDICAMENTO ||--o{ MEDICAMENTO_RECEITA : necessita
-    RECEITA_MEDICA ||--o{ MEDICAMENTO_RECEITA : autoriza
-    PRODUTO ||--o{ PRODUTO_VENDA : esta_em
-    VENDA ||--o{ PRODUTO_VENDA : contem
-
+    Trabalho ||--o{ Parecer : recebe
+    Usuario ||--o{ Parecer : emite
 
 ```
 ---
