@@ -1,24 +1,21 @@
 
-📚 Referência Principal
 
-HEUSER, C. A. Projeto de Banco de Dados. Porto Alegre: Sagra Luzzatto, 2001.
-Catálogo de bibliotecas: https://www.worldcat.org/title/47071640
-
+### 📚 **Referência Principal**
+HEUSER, C. A. *Projeto de Banco de Dados*. Porto Alegre: Sagra Luzzatto, 2001.  
+[Catálogo de bibliotecas: https://www.worldcat.org/title/47071640](https://www.worldcat.org/title/47071640)
 
 ---
 
-📌 1. Conceitos Básicos
+## 📌 **1. Conceitos Básicos**
 
-Banco de Dados (BD): Coleção estruturada de dados relacionados.
+- **Banco de Dados (BD)**: Coleção estruturada de dados relacionados.
+- **Sistema Gerenciador de Banco de Dados (SGBD)**: Software que controla o acesso, manipulação e segurança dos dados.
+- **Dados x Informação**: Dados são brutos, informação é tratada e interpretada.
 
-Sistema Gerenciador de Banco de Dados (SGBD): Software que controla o acesso, manipulação e segurança dos dados.
+### Representação ASCII:
 
-Dados x Informação: Dados são brutos, informação é tratada e interpretada.
-
-
-Representação ASCII:
-
-+----------------------+
+```plaintext
+      +----------------------+
       |       SGBD          |
       |  +--------------+   |
       |  |     BD       |   |
@@ -30,63 +27,49 @@ Representação ASCII:
       |                      |
       | BACKUP               |
       +----------------------+
+```
 
-Diagrama Mermaid:
+### Diagrama Mermaid:
 
+```mermaid
 graph TD;
     A[SGBD] --> B[BD - Banco de Dados];
     B --> C["Coleção"];
     A --> D[Serviços: Integridade e Segurança];
     A --> E[Backup];
-
-
----
-
-📌 2. Modelos de Banco de Dados
-
-Hierárquico: estrutura em árvore.
-
-Rede: estrutura em grafo, relacionamentos complexos.
-
-Relacional: base em tabelas (modelo mais usado).
-
-
+```
 
 ---
 
-📌 3. Modelo Relacional
+## 📌 **2. Modelos de Banco de Dados**
 
-Elementos:
-
-Relação (Tabela)
-
-Tupla (Linha)
-
-Atributo (Coluna)
-
-Chave primária e Chave estrangeira
-
-
-Fases de Modelagem:
-
-1. Modelo Conceitual (Ex: Diagrama ER)
-
-
-2. Modelo Lógico (Transformado em tabelas relacionais)
-
-
-3. Modelo Físico (Implementação no SGBD)
-
-
-
+- **Hierárquico**: estrutura em árvore.
+- **Rede**: estrutura em grafo, relacionamentos complexos.
+- **Relacional**: base em tabelas (modelo mais usado).
 
 ---
 
-📌 4. Exemplo Prático – Modelo de Ordem de Serviço (OS)
+## 📌 **3. Modelo Relacional**
 
-ASCII:
+### Elementos:
+- **Relação** (Tabela)
+- **Tupla** (Linha)
+- **Atributo** (Coluna)
+- **Chave primária** e **Chave estrangeira**
 
-+----------------+
+### Fases de Modelagem:
+1. **Modelo Conceitual** (Ex: Diagrama ER)
+2. **Modelo Lógico** (Transformado em tabelas relacionais)
+3. **Modelo Físico** (Implementação no SGBD)
+
+---
+
+## 📌 **4. Exemplo Prático – Modelo de Ordem de Serviço (OS)**
+
+### ASCII:
+
+```plaintext
+              +----------------+
               |      O.S.      |
               | -------------- |
               | *Número OS*    |1..n
@@ -102,93 +85,94 @@ ASCII:
               +----------------+---------------------|
               |    Cliente     |1..1
               +----------------+
+```
 
-Mermaid:
+### Mermaid:
 
+```mermaid
 graph TD;
     A[Ordem de Serviço] -->|1..n| B[Produto];
     A -->|1..1| C[Cliente];
-
+```
 
 ---
 
-📌 5. Modelagem de Sistema de Venda
+## 📌 **5. Modelagem de Sistema de Venda**
 
-ASCII:
+### ASCII:
 
 (Simplificado – Venda, Cliente, Produto, Item_Venda, Prateleira, Vendedor)
 
-Diagrama Mermaid:
+### Diagrama Mermaid:
 
+```mermaid
 erDiagram
     CLIENTE ||--o{ VENDA : "realiza"
     VENDEDOR ||--o{ VENDA : "efetua"
     VENDA ||--o{ ITEM_VENDA : "contém"
     PRODUTO ||--o{ ITEM_VENDA : "é vendido em"
     PRODUTO }o--|| PRATELEIRA : "está armazenado em"
-
-
----
-
-📌 6. Modelagem Conceitual x Lógica x Física
-
+```
 
 ---
 
-📌 7. Exemplos Avançados – Modelos para Farmácia e Avaliação de Artigos
+## 📌 **6. Modelagem Conceitual x Lógica x Física**
 
-Você incluiu exemplos detalhados de domínio, como:
+| Etapa        | Representação                                  |
+|--------------|------------------------------------------------|
+| Conceitual   | Entidades, atributos, relacionamentos (ER)     |
+| Lógica       | Tabelas, colunas, chaves                       |
+| Física       | Tipos SQL, índices, otimizações, segurança     |
 
-🧪 Farmácia (Medicamentos, Receitas, Produtos, Fornecedores)
+---
 
-Especializações (Produto → Medicamento/Perfumaria)
+## 📌 **7. Exemplos Avançados – Modelos para Farmácia e Avaliação de Artigos**
 
-Relacionamentos muitos-para-muitos (Produto-Venda, Medicamento-Receita)
+Você incluiu exemplos **detalhados de domínio**, como:
 
+### 🧪 Farmácia (Medicamentos, Receitas, Produtos, Fornecedores)
 
-🎓 Sistema Web de Avaliação de Artigos
+- Especializações (Produto → Medicamento/Perfumaria)
+- Relacionamentos muitos-para-muitos (Produto-Venda, Medicamento-Receita)
 
-Instituições, Eventos, Artigos, Avaliadores
+### 🎓 Sistema Web de Avaliação de Artigos
 
-Fluxo de submissão → delegação → parecer
-
+- Instituições, Eventos, Artigos, Avaliadores
+- Fluxo de submissão → delegação → parecer
 
 Diagrama principal:
 
+```mermaid
 erDiagram
     Usuario ||--o{ Evento : coordena
     Evento ||--|| ModeloArtigo : usa
     Evento ||--o{ Trabalho : recebe
     Trabalho ||--o{ Parecer : recebe
-
-
----
-
-📌 8. Conceitos Complementares
-
-Entidade = objeto real/mundo real no modelo ER
-
-Categoria/Generalização/Especialização = abstrações para reuso e estrutura
-
-Dependência referencial: uso de chaves estrangeiras
-
-Restrições: integridade, cardinalidade, duplicidade
-
-
+```
 
 ---
 
-📌 9. Modelagem e Projeto: Diferença
+## 📌 **8. Conceitos Complementares**
 
+- **Entidade** = objeto real/mundo real no modelo ER
+- **Categoria/Generalização/Especialização** = abstrações para reuso e estrutura
+- **Dependência referencial**: uso de chaves estrangeiras
+- **Restrições**: integridade, cardinalidade, duplicidade
 
 ---
 
-🧠 Sugestão de Revisão para Prova
+## 📌 **9. Modelagem e Projeto: Diferença**
 
-Estude a transformação de modelo conceitual para relacional.
+| Termo     | Definição |
+|-----------|-----------|
+| **Modelar** | Abstrair: representar estrutura |
+| **Projetar** | Implementar: decidir tecnologias, estrutura física |
 
-Refaça os diagramas Mermaid ou ER manualmente para memorizar.
+---
 
-Revise conceitos como: chave primária, chave estrangeira, normalização.
+## 🧠 **Sugestão de Revisão para Prova**
 
-Releia os modelos fornecidos: farmácia, sistema de venda, obras, artigos.
+- Estude a **transformação de modelo conceitual para relacional**.
+- Refaça os **diagramas Mermaid ou ER** manualmente para memorizar.
+- Revise conceitos como: **chave primária**, **chave estrangeira**, **normalização**.
+- Releia os modelos fornecidos: **farmácia, sistema de venda, obras, artigos**.
