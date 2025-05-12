@@ -57,10 +57,15 @@ SELECT COUNT(*)
 FROM aluno , curso
 WHERE curso.nome = 'Ciência da Computação' and curso.cursoId = aluno.curso;
 
+SELECT aluno.nome
+FROM aluno
+JOIN curso ON curso.cursoId = aluno.curso
+WHERE curso.nome = 'Ciência da Computação';
+
 
 -- Criação do banco de dados
-CREATE DATABASE IF NOT EXISTS exemplo_relacional;
-USE exemplo_relacional;
+-- CREATE DATABASE IF NOT EXISTS exemplo_relacional;
+-- USE exemplo_relacional;
 
 -- Tabela de usuários
 CREATE TABLE Usuario (
