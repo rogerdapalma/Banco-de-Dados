@@ -142,3 +142,36 @@ INNER JOIN Cidade ON Cidade.idCidade = Aeroporto.idCidade
 WHERE Cidade.nome = 'São Paulo'
   AND Aeroporto.tipo = 'Internacional';
 
+
+-- 3 exercicios
+
+-- listar todos os cursos cadastrados e sua relação com istituição(id)
+SELECT curso.nome, curso.Instituicao_idInstituicao
+FROM curso;
+
+-- listar todos os cursos e os nomes respectivios de suas instituições
+SELECT curso.nome, instituicao.nome
+FROM curso, instituicao
+where curso.Instituicao_idInstituicao = Instituicao.idInstituicao
+
+-- mostrar todos os usuarios de cursos que tenha bio no nome e seus respectivos cursos
+SELECT Usuario.nome, curso.nome
+FROM Usuario,curso,Usuario_has_curso
+WHERE curso.nome like 'bio' and
+      curso.idCurso = Usuario_has_curso.curso_idCurso and
+      usuario.idUsuario = Usuario_has_curso.usuario_idUsuarios;
+
+-- Listar os avaliadores
+
+SELECT Usuario.*
+FROM Usuario, avaliacao
+WHERE Usuario.idUsuario = avaliacao.usuario_idUsuario_avaliadorResponsavel or
+      Usuario.idUsuario = avaliacao.usuario_idUsuario_suplente;
+
+-- listar quem nao fez parecer
+SELECT Usuario.nome
+FROM Usuario, avaliacao
+Where (avaliacao.parecerAvalaiadorResponsavel = NULL or avaliacao.parecerAvalaiadorResponsavel = NULL)
+       and
+      (Usuario.idUsuario = avaliacao.usuario_idUsuario_avaliadorResponsavel or
+      Usuario.idUsuario = avaliacao.usuario_idUsuario_suplente);
