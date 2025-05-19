@@ -219,6 +219,10 @@ WHERE idGerente is null
 SELECT Empregado.nome,  Empregado.salario
 FROM  Empregado
 WHERE  Empregado.salario  NOT  BETWEEN  1000  AND  3500;
+SELECT Empregado.nome,  Empregado.salario
+FROM  Empregado
+WHERE  Empregado.salario  <  1000  or Empregado.salario > 3500;
+
 #
 ############################################################################
 # Apresente todos os funcionários com salários
@@ -231,6 +235,11 @@ SELECT Empregado.nome, Empregado.salario, Empregado.funcao
 FROM  Empregado
 WHERE  Empregado.salario  BETWEEN  3400 AND 5000
 AND  Empregado.funcao =  'balconista';
+
+
+SELECT Empregado.nome, Empregado.salario
+FROM Empregado
+WHERE Empregado.funcao = 'balconista' and Empregado.salario BETWEEN 3400 AND 4000;
 #
 ############################################################################
 # Apresente todos os funcionários com salários
@@ -258,6 +267,29 @@ OR  Empregado.funcao =  'balconista';
 SELECT LOWER( Empregado.nome )
 FROM Empregado;
 #
+
+select sum(Departamento.orcamento) as "gasto total"
+from departamento;
+
+select avg(Departamento.orcamento) as "media gasta"
+FROM departamento;
+
+SELECT Departamento.nome, min(Departamento.orcamento)
+FROM Departamento;
+
+SELECT Departamento.nome, min(Departamento.orcamento)
+FROM Departamento;
+
+SELECT  Departamento.Nome , Departamento.orcamento
+FROM Departamento
+WHERE Departamento.orcamento = (SELECT  MIN(Departamento.orcamento)
+                                FROM Departamento);
+
+SELECT Departamento.Nome , Departamento.orcamento
+FROM Departamento
+WHERE Departamento.orcamento > (SELECT AVG(Departamento.orcamento)
+                                FROM Departamento);
+
 ############################################################################
 # Apresente o nome de todos os empregados (somente as 5 primeiras letras).
 ############################################################################
