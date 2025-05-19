@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/Banco de Dados I/Aulas/Aula19.05/Database.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/Banco de Dados I/Aulas/Exercicios/Praticas/Aula12.05/Databaee.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/Banco de Dados I/Padel.sql" dialect="MySQL" />
   </component>
