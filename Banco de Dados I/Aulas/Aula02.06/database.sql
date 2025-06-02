@@ -3,12 +3,10 @@ SELECT name, database_id, create_date
 FROM sys.databases;
 
 -- Cria o banco de dados
-CREATE DATABASE editora_db;
-GO
+CREATE DATABASE editora_db1;
 
 -- Usa o banco de dados
-USE editora_db;
-GO
+USE editora_db1;
 
 -- Criação das tabelas
 CREATE TABLE Autor (
@@ -146,8 +144,8 @@ FROM Livro L
 JOIN Editora E ON L.idEditora = E.idEditora
 WHERE E.idEditora IN (1,5);
 
-
 -- xii. Livros infantis das editoras 1 ou 5 "AS [CODIGO]"
+
 SELECT L.titulo, G.descricao, L.idEditora AS [Código Editora], E.nome AS Editora
 FROM Livro L
 JOIN Genero G ON L.idGenero = G.idGenero
