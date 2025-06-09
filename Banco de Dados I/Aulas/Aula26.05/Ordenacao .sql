@@ -497,3 +497,39 @@ AND R.semanasConsecutivas = (
 
 SELECT nome, idAutor FROM Autor;
 
+select Autor.nome as autor , Genero.descricao
+from  Genero, autor
+where  Genero.descricao = 'Ficção';
+
+
+select Editora.nome, Genero.descricao
+from  Editora, genero
+where genero.descricao = 'Infantil';
+
+
+SELECT Editora.nome , genero.descricao , autor.nome
+from editora,genero,autor
+where autor.nome = 'Francisco';
+
+SELECT Autor.nome, COUNT(*) AS quantidade_livros
+FROM Autor
+INNER JOIN Livro_Autor ON Autor.idAutor = Livro_Autor.idAutor
+GROUP BY Autor.nome
+HAVING quantidade_livros = (
+    SELECT MAX(qtd)
+    FROM (
+        SELECT COUNT(*) AS qtd
+        FROM Livro_Autor
+        GROUP BY idAutor
+    ) AS subconsulta
+);
+
+
+SELECT Genero.descricao AS genero, COUNT(*) AS total_publicacoes
+FROM Livro
+INNER JOIN Genero ON Livro.idGenero = Genero.idGenero
+GROUP BY Genero.descricao
+ORDER BY total_publicacoes DESC
+LIMIT 1;
+
+

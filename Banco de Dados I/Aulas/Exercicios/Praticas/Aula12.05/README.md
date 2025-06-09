@@ -68,4 +68,5 @@ Claro! Aqui está um **resumo confiável e organizado** do conteúdo sobre **Ban
 * [Oracle SQL Documentation](https://docs.oracle.com/en/database/)
 * [PostgreSQL Documentation](https://www.postgresql.org/docs/)
 
-Quer que eu também gere um esquema visual com as fases da modelagem?
+
+
